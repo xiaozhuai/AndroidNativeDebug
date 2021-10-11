@@ -151,17 +151,12 @@ public class LLDBRunConfiguration extends BaseRunConfiguration
 
         @Override
         public void flush() {
-            try {
-                StringReader reader = new StringReader(buffer.toString());
-                BufferedReader buffer = new BufferedReader(reader);
-                String line = buffer.readLine(); // read one line
-                if (line.contains(" ")) { // If multi process with same name, then choose first one
-                    line = line.split(" ")[0];
-                }
-                pid = Integer.parseInt(line);
-            }catch (Exception e){
-                e.printStackTrace();
+            String result = buffer.toString();
+            if (result.contains(" ")) {
+                result = result.split(" ")[0];
             }
+            result = result.trim();
+            pid = Integer.parseInt(result);
         }
 
         @Override

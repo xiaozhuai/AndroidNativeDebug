@@ -183,7 +183,7 @@ public class AndroidLLDBDriver extends LLDBDriver {
 
     private void initCommands(){
         mStartUpScripts = new ArrayList<>();
-        mStartUpScripts.add(mParameters.getDebugExePath() + "/shared/load_script");
+        mStartUpScripts.add(mParameters.getDebugExePath() + "/shared/stl_printers/load_script");
         myPostAttachCommands = new ArrayList<>();
         myPostAttachCommands.add("settings set target.process.thread.step-avoid-regexp ''");
         myPostAttachCommands.add("type format add --format boolean jboolean");
